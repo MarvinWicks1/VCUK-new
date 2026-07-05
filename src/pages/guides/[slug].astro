@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { guides } from "../../data";
+export function getStaticPaths(){return guides.map((item)=>({params:{slug:item.slug},props:{item}}));}
+const { item } = Astro.props;
+---
+<BaseLayout title={`${item.title} | VCUK Guides`} description={item.summary}>
+<article><section class="page-hero"><div class="container"><span class="eyebrow">{item.category} · {item.reading}</span><h1>{item.title}</h1><p class="lead">{item.summary}</p></div></section><section class="section"><div class="container" style="max-width:820px">{item.body.map((p) => <p>{p}</p>)}<h2>A practical next step</h2><p>If your website has useful proof but no clear structure, start with the <a href="/#website-checker">website checker</a> or ask Ian which service fits.</p></div></section></article>
+</BaseLayout>
