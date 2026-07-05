@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { services } from "../../data";
+---
+<BaseLayout title="Website Services for Small Businesses | VCUK Web Services" description="Explore VCUK website services including one-page websites, starter websites, business websites, redesigns, SEO foundations, local SEO support, and care plans.">
+<section class="page-hero"><div class="container"><span class="eyebrow">Services</span><h1>Website services built around clarity, trust, and enquiries.</h1><p class="lead">VCUK helps small service businesses turn scattered information into clear websites with sensible pricing, useful structure, and direct support from Ian.</p></div></section>
+<section class="section"><div class="container grid grid-3">{services.map((s) => <article class="card"><p class="price">{s.price}</p><h2 style="font-size:1.55rem"><a href={`/services/${s.slug}/`}>{s.short}</a></h2><p>{s.summary}</p><p><strong>Best for:</strong> {s.bestFor}</p></article>)}</div></section>
+</BaseLayout>
