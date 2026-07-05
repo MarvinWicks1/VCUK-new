@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+import { site } from "../data";
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).toString();
+const nav = [["Services", "/services/"], ["Work", "/work/"], ["Pricing", "/pricing/"], ["Guides", "/guides/"], ["About", "/about/"], ["Contact", "/contact/"]];
+const schema = [{"@context":"https://schema.org","@type":"Organization",name:site.name,url:site.url,email:site.email,telephone:site.phoneVisible,areaServed:"United Kingdom"},{"@context":"https://schema.org","@type":"WebSite",name:site.name,url:site.url}];
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#071B3A" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="/" aria-label="VCUK Web Services home"><span class="logo-mark">VC</span><span><strong>VCUK</strong><small>Web Services</small></span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          {nav.map(([label, href]) => <a href={href}>{label}</a>)}
+          <a class="button" href="/contact/">Get a quote</a>
+        </nav>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><a class="logo" href="/"><span class="logo-mark">VC</span><span><strong>VCUK</strong><small>Web Services</small></span></a><p>Clear websites, practical next steps. Built direct with Ian for small service businesses that need customers to understand and enquire faster.</p></div>
+        <div><h3>Contact</h3><p><a href={`mailto:${site.email}`}>{site.email}</a><br /><a href={site.whatsappUrl}>WhatsApp {site.phoneVisible}</a><br />{site.location}</p></div>
+        <div><h3>Explore</h3>{nav.map(([label, href]) => <p><a href={href}>{label}</a></p>)}</div>
+      </div>
+      <div class="container footer-bottom">© {new Date().getFullYear()} VCUK Web Services. Do not deploy production changes without Ian's approval.</div>
+    </footer>
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.site-nav');
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open));
+        nav?.classList.toggle('is-open', open);
+      });
+    </script>
+  </body>
+</html>
