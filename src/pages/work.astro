@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { workItems } from "../data";
+---
+<BaseLayout title="Work and Website Examples | VCUK Web Services" description="See real VCUK work and clearly labelled concept website examples for local service businesses including pet care, trades, cleaning, and beauty.">
+<section class="page-hero"><div class="container"><span class="eyebrow">Work</span><h1>Proof first, concepts labelled clearly.</h1><p class="lead">VCUK shows real client work where accurate and uses concept examples honestly to demonstrate structure, design thinking, and commercial clarity.</p></div></section>
+<section class="section"><div class="container grid grid-2">{workItems.map(([title,label,summary]) => <article class="browser"><div class="visual"><span class="pill">{label}</span><h2>{title}</h2><div class="visual-box"></div></div><div class="card"><p>{summary}</p><p>{label === "Real client work" ? "Pet-care services made easier to trust and enquire about." : "Clearly labelled concept work, not presented as a live client project."}</p></div></article>)}</div></section>
+</BaseLayout>
