@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { services } from "../data";
+---
+<BaseLayout title="Website Pricing | VCUK Web Services" description="Transparent starting prices for one-page websites, starter websites, business websites, redesigns, SEO foundations, and monthly website support.">
+<section class="page-hero"><div class="container"><span class="eyebrow">Pricing</span><h1>Clear starting prices before you book a call.</h1><p class="lead">Prices are practical starting points, not vague bait. The final quote depends on pages, content, integrations, proof assets, and support needs.</p></div></section>
+<section class="section"><div class="container grid grid-3">{services.map((s) => <article class="card"><p class="price">{s.price}</p><h2 style="font-size:1.55rem">{s.short}</h2><p>{s.summary}</p><a href={`/services/${s.slug}/`}>What this includes</a></article>)}</div></section>
+<section class="section frost"><div class="container split"><div><span class="eyebrow">What affects price</span><h2>A focused £350 site is not the same job as a full business website.</h2></div><ul class="features"><li>Number of pages and service detail.</li><li>How much copy, proof, or old content needs sorting.</li><li>Forms, booking links, redirects, and technical cleanup.</li><li>Ongoing updates or support after launch.</li></ul></div></section>
+</BaseLayout>
