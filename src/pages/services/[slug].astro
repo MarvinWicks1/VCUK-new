@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { services, site } from "../../data";
+export function getStaticPaths(){return services.map((item)=>({params:{slug:item.slug},props:{item}}));}
+const { item } = Astro.props;
+---
+<BaseLayout title={`${item.short} | VCUK Web Services`} description={item.summary}>
+<section class="page-hero"><div class="container"><span class="eyebrow">{item.price}</span><h1>{item.title}</h1><p class="lead">{item.summary}</p><div class="button-row"><a class="button" href="/contact/">Ask Ian about this</a><a class="button secondary" href="/pricing/">Compare pricing</a></div></div></section>
+<section class="section"><div class="container split"><article><span class="eyebrow">Who it is for</span><h2>Best suited to businesses that need a practical next step.</h2><p>{item.bestFor}</p></article><article class="card"><span class="eyebrow">Problem it solves</span><h2 style="font-size:1.8rem">{item.problem}</h2></article></div></section>
+<section class="section frost"><div class="container split"><div><span class="eyebrow">What is included</span><h2>Clear scope before build.</h2></div><ul class="features">{item.includes.map((i) => <li>{i}</li>)}</ul></div></section>
+<section class="section"><div class="container"><div class="section-head"><span class="eyebrow">FAQs</span><h2>Useful questions before you enquire.</h2></div><div class="grid grid-3">{item.faqs.map(([q,a]) => <details class="card"><summary><strong>{q}</strong></summary><p>{a}</p></details>)}</div></div></section>
+<section class="section"><div class="container"><div class="cta"><div><h2>Ask Ian about {item.short.toLowerCase()}.</h2><p>Share your current site, social page, or rough idea. Ian will tell you whether this is the right fit.</p></div><div class="button-row"><a class="button" href="/contact/">Contact Ian</a><a class="button secondary" href={site.whatsappUrl}>WhatsApp Ian</a></div></div></div></section>
+</BaseLayout>
