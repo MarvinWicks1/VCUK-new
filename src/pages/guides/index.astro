@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { guides } from "../../data";
+---
+<BaseLayout title="Small Business Website Guides | VCUK Web Services" description="Plain-English guides from VCUK on one-page websites, Facebook vs websites, trust signals, SEO basics, and clearer enquiry journeys.">
+<section class="page-hero"><div class="container"><span class="eyebrow">Guides</span><h1>Plain-English website advice for small businesses.</h1><p class="lead">Short, practical guides Ian can point people to when they are deciding what their website should do next.</p></div></section>
+<section class="section"><div class="container grid grid-3">{guides.map((g) => <article class="card"><span class="pill">{g.category} · {g.reading}</span><h2 style="font-size:1.55rem"><a href={`/guides/${g.slug}/`}>{g.title}</a></h2><p>{g.summary}</p><a href={`/guides/${g.slug}/`}>Read the guide</a></article>)}</div></section>
+</BaseLayout>
