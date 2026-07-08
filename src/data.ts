@@ -76,14 +76,14 @@ export const services = [
   },
   {
     slug: "website-care-plans",
-    title: "Website care plans and practical support",
-    short: "Website care plans",
+    title: "Website hosting, maintenance and support",
+    short: "Hosting and maintenance",
     price: "From £50/month",
-    summary: "Ongoing help for updates, small improvements, checks, and keeping your website useful after launch.",
-    bestFor: "Businesses that want a reliable person to handle website updates without a heavy agency retainer.",
-    problem: "A website can drift out of date quickly when services, prices, photos, staff, or opening details change.",
-    includes: ["Small content updates and website changes", "Checks for forms, contact links, and visible issues", "Improvement priority guidance", "Support for new sections, guide posts, or proof updates", "Clear monthly scope agreed before the plan starts"],
-    faqs: [["Is there a long contract?", "Terms are agreed before starting. VCUK avoids confusing support arrangements."], ["Can I request larger changes?", "Yes, but larger work may be quoted separately so the monthly plan stays fair."], ["Do I need a care plan?", "Not always. Some sites only need occasional updates."]]
+    summary: "Hosting, maintenance checks, form/contact link checks, security basics and light support to keep your website looked after after launch.",
+    bestFor: "Businesses that want the website hosted, checked and looked after by a reliable person without a heavy agency retainer.",
+    problem: "A website can drift out of date or quietly break when hosting, forms, contact links, updates, checks and small changes are left unattended.",
+    includes: ["Website hosting setup or hosting support where agreed", "Routine maintenance and visible issue checks", "Form, email, phone and WhatsApp link checks", "Basic security and uptime awareness checks", "Light content updates and practical support within the agreed monthly scope"],
+    faqs: [["Is this just small updates?", "No. The monthly plan is mainly about keeping the website hosted, maintained, checked and supported after launch. Light updates can be included within the agreed scope."], ["Can I request larger changes?", "Yes, but larger work may be quoted separately so the monthly plan stays fair."], ["Do I need a care plan?", "Not always. Some sites only need occasional updates, but a care plan is useful when you want hosting and maintenance handled for you."]]
   }
 ];
 
