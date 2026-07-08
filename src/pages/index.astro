@@ -1,11 +1,38 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { services, workItems, guides } from "../data";
+import { workItems, guides } from "../data";
+
+const pricingGuide = [
+  {
+    title: "One-page website",
+    price: "from £350",
+    text: "One clear page for sole traders and small local businesses.",
+    href: "/services/one-page-websites/"
+  },
+  {
+    title: "Starter website",
+    price: "from £950",
+    text: "A fuller brochure website when one page is not enough.",
+    href: "/services/starter-websites/"
+  },
+  {
+    title: "Refresh",
+    price: "from £750",
+    text: "A clearer version of an existing site when the basics still work.",
+    href: "/services/website-redesigns/"
+  },
+  {
+    title: "Hosting, maintenance and support",
+    price: "from £50/month",
+    text: "Hosting setup, maintenance checks, form/contact link checks, security basics and light support after launch.",
+    href: "/services/website-care-plans/"
+  }
+];
 ---
 <BaseLayout title="VCUK Web Services | Clear Websites for Local Businesses" description="VCUK Web Services builds fast, polished websites for small UK service businesses, with clear pricing, practical SEO foundations, and direct support from Ian.">
   <section class="hero"><div class="container hero-grid"><div><span class="eyebrow">Websites from £350 · Direct with Ian</span><h1><span class="blue">Clearer websites</span> for local businesses that need more enquiries, not more confusion.</h1><p class="lead">VCUK Web Services builds fast, polished websites for small UK service businesses. Clear services, stronger trust, better mobile experience, and simple routes for customers to call, message, book, or request a quote.</p><div class="button-row"><a class="button" href="/contact/">Get a website quote</a><a class="button secondary" href="/work/">See what VCUK can build</a></div><div class="trust"><span class="pill">Websites from £350</span><span class="pill">Based in Winsford, Cheshire</span><span class="pill">Direct with Ian</span><span class="pill">Mobile-first and SEO-aware</span></div></div><div class="mockup"><div class="mockup-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="mockup-screen"><span class="pill">Trusted local service</span><div class="preview-grid"><div><p class="preview-title">Clear services, proof, and quick quote routes.</p><span class="line" style="width:86%"></span><span class="line" style="width:72%"></span></div><div class="preview-art" role="img" aria-label="Blue website preview panel"></div></div><div class="grid grid-3"><div class="card"><strong>Services explained</strong></div><div class="card"><strong>Reviews and proof</strong></div><div class="card"><strong>Call or WhatsApp</strong></div></div></div></div></div></section>
   <section class="section"><div class="container split"><div><span class="eyebrow">The real problem</span><h2>Your business may already have the proof. The problem is where customers have to find it.</h2></div><div><p class="lead">Many small businesses have strong photos, reviews, services, and contact details scattered across Facebook, Instagram, messages, and old web pages. VCUK turns that into one clear website customers can understand quickly.</p><ul class="features"><li>No more making customers scroll through posts to find prices or services.</li><li>No unclear first impression when someone searches your business name.</li><li>No missed enquiries because the next step is buried.</li><li>No website that looks cheaper than the work you actually do.</li></ul></div></div></section>
-  <section class="section frost"><div class="container"><div class="section-head"><span class="eyebrow">Services</span><h2>Practical website packages with a clear starting point.</h2></div><div class="grid grid-4">{services.slice(0,4).map((s) => <article class="card"><p class="price">{s.price}</p><h3><a href={`/services/${s.slug}/`}>{s.short}</a></h3><p>{s.summary}</p></article>)}</div></div></section>
+  <section class="section frost"><div class="container"><div class="section-head"><span class="eyebrow">Quick pricing guide</span><h2>Useful starting points, explained properly.</h2><p class="lead">The monthly support option is not just “small updates”. It covers the practical hosting and maintenance basics that keep a website looked after after launch.</p></div><div class="grid grid-4">{pricingGuide.map((item) => <article class="card"><p class="price">{item.price}</p><h3><a href={item.href}>{item.title}</a></h3><p>{item.text}</p></article>)}</div></div></section>
   <section class="section band"><div class="container split"><div><span class="eyebrow">Why VCUK</span><h2>A smaller web service with sharper focus.</h2><p>VCUK is not trying to be a big digital agency. You work directly with Ian to plan a website that makes sense for your business, your customers, and your budget.</p></div><ul class="features"><li>Direct communication with the person building the site.</li><li>Clear scope before build, with honest recommendations.</li><li>Practical SEO foundations without ranking promises.</li><li>Mobile-first pages designed around how customers choose.</li></ul></div></section>
   <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Work and examples</span><h2>Built to show the standard before you enquire.</h2></div><div class="grid grid-2">{workItems.slice(0,2).map(([title,label,summary]) => <article class="browser"><div class="visual"><span class="pill">{label}</span><h3>{title}</h3><div class="visual-box"></div></div><div class="card"><p>{summary}</p></div></article>)}</div></div></section>
   <section class="section frost" id="website-checker"><div class="container split"><div><span class="eyebrow">Free website clarity check</span><h2>Quick check: is your website making enquiries easier?</h2><p class="lead">Enter your website and a few business details. The checker runs a practical rule-based review, shows your score, and emails you the result. Ian also receives a copy.</p></div><form class="form-shell" id="checker-form" novalidate><div class="form-grid"><div class="field full"><label for="website_url">Website URL</label><input id="website_url" name="website_url" required /></div><div class="field"><label for="business_name">Business name</label><input id="business_name" name="business_name" required /></div><div class="field"><label for="checker_email">Email address</label><input id="checker_email" name="email" type="email" required /></div><div class="field full"><label for="business_description">Short business description</label><textarea id="business_description" name="business_description" required></textarea></div><div class="honeypot"><label for="company_website">Company website</label><input id="company_website" name="company_website" tabindex="-1" /></div></div><button class="button" type="submit" style="margin-top:1rem">Check my website</button><p class="status" id="checker-status" hidden></p><div class="result" id="checker-result" hidden></div></form></div></section>
